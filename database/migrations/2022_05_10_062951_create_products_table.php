@@ -1,0 +1,41 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('product_type');
+            $table->integer('product_weight');
+            $table->integer('product_rate');
+            $table->integer('product_gst');
+            $table->string('making_type')->nullable();
+            $table->integer('making_gst')->default(0);
+            $table->integer('making_charge')->default(0);
+            $table->integer('branch_id')->default(0);
+            $table->integer('user_id')->default(0);
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('products');
+    }
+};
